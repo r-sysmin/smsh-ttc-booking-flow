@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Atlas/Slate theme (neutral, OKLCH) ─────────────────────────────
+ * Ported from Atlas's application.css. Neutral base with --sheet and
+ * --hairline custom tokens. Tailwind config maps --color-* vars to
+ * utility classes.
+ */
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    --color-background: oklch(1 0 0);
+    --color-foreground: oklch(0.145 0 0);
+    --color-card: oklch(1 0 0);
+    --color-card-foreground: oklch(0.145 0 0);
+    --color-popover: oklch(1 0 0);
+    --color-popover-foreground: oklch(0.145 0 0);
+    --color-primary: oklch(0.205 0 0);
+    --color-primary-foreground: oklch(0.985 0 0);
+    --color-secondary: oklch(0.97 0 0);
+    --color-secondary-foreground: oklch(0.205 0 0);
+    --color-muted: oklch(0.97 0 0);
+    --color-muted-foreground: oklch(0.556 0 0);
+    --color-accent: oklch(0.97 0 0);
+    --color-accent-foreground: oklch(0.205 0 0);
+    --color-destructive: oklch(0.577 0.245 27.325);
+    --color-destructive-foreground: oklch(0.985 0 0);
+    --color-border: oklch(0.922 0 0);
+    --color-input: oklch(0.922 0 0);
+    --color-ring: oklch(0.708 0 0);
+    --color-chart-1: oklch(0.7 0.15 195);
+    --color-chart-2: oklch(0.65 0.2 250);
+    --color-chart-3: oklch(0.6 0.18 280);
+    --color-chart-4: oklch(0.828 0.189 84.429);
+    --color-chart-5: oklch(0.769 0.188 70.08);
+    --color-sidebar: oklch(1 0 0);
+    --color-sidebar-foreground: oklch(0.145 0 0);
+    --color-sidebar-primary: oklch(0.205 0 0);
+    --color-sidebar-primary-foreground: oklch(0.985 0 0);
+    --color-sidebar-accent: oklch(0.97 0 0);
+    --color-sidebar-accent-foreground: oklch(0.205 0 0);
+    --color-sidebar-border: oklch(0.922 0 0);
+    --color-sidebar-ring: oklch(0.708 0 0);
+    --color-sheet: #fcfcfd;
+    --color-hairline: lch(91.9 0 282);
+  }
+
+  .dark {
+    --color-background: oklch(0.145 0 0);
+    --color-foreground: oklch(0.985 0 0);
+    --color-card: oklch(0.205 0 0);
+    --color-card-foreground: oklch(0.985 0 0);
+    --color-popover: oklch(0.205 0 0);
+    --color-popover-foreground: oklch(0.985 0 0);
+    --color-primary: oklch(0.922 0 0);
+    --color-primary-foreground: oklch(0.205 0 0);
+    --color-secondary: oklch(0.269 0 0);
+    --color-secondary-foreground: oklch(0.985 0 0);
+    --color-muted: oklch(0.269 0 0);
+    --color-muted-foreground: oklch(0.708 0 0);
+    --color-accent: oklch(0.269 0 0);
+    --color-accent-foreground: oklch(0.985 0 0);
+    --color-destructive: oklch(0.704 0.191 22.216);
+    --color-destructive-foreground: oklch(0.985 0 0);
+    --color-border: oklch(1 0 0 / 10%);
+    --color-input: oklch(1 0 0 / 15%);
+    --color-ring: oklch(0.556 0 0);
+    --color-chart-1: oklch(0.65 0.15 195);
+    --color-chart-2: oklch(0.6 0.2 250);
+    --color-chart-3: oklch(0.65 0.18 280);
+    --color-chart-4: oklch(0.627 0.265 303.9);
+    --color-chart-5: oklch(0.645 0.246 16.439);
+    --color-sidebar: oklch(0.205 0 0);
+    --color-sidebar-foreground: oklch(0.985 0 0);
+    --color-sidebar-primary: oklch(0.488 0.243 264.376);
+    --color-sidebar-primary-foreground: oklch(0.985 0 0);
+    --color-sidebar-accent: oklch(0.269 0 0);
+    --color-sidebar-accent-foreground: oklch(0.985 0 0);
+    --color-sidebar-border: oklch(1 0 0 / 10%);
+    --color-sidebar-ring: oklch(0.556 0 0);
+    --color-sheet: oklch(0.145 0 0);
+    --color-hairline: oklch(1 0 0 / 12%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ── Hairline border utilities ──────────────────────────────────────
+ * 0.5px solid lines for chrome/structural boundaries. */
+
+.border-hairline { border: 0.5px solid var(--color-hairline); }
+.border-t-hairline { border-top: 0.5px solid var(--color-hairline); }
+.border-r-hairline { border-right: 0.5px solid var(--color-hairline); }
+.border-b-hairline { border-bottom: 0.5px solid var(--color-hairline); }
+.border-l-hairline { border-left: 0.5px solid var(--color-hairline); }
+
+/* ── Peekable sidebar overrides ──────────────────────────────────── */
+
+[data-peek-state] .group\/sidebar-wrapper {
+  --sidebar-width: inherit !important;
+}
+
+[data-peek-state] [data-side] > div:last-child {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+[data-sidebar="sidebar"][data-mobile="true"] {
+  width: calc(100% - 45px) !important;
+}
